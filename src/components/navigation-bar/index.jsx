@@ -16,6 +16,7 @@ const NavigationBar = () => {
             <Link to={"/contacts"}>Contacts</Link>
             <Link to={"/match-up"}>Match Up</Link>
             <Link to={"/auth/login"}>Login</Link>
+            <Link to={"/auth/login"}>Sample lang to</Link>
         </div>
     </nav>
   )
