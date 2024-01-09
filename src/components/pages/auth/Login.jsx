@@ -3,7 +3,7 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
 import LoginImage from "@/assets/images/login-image.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const LoginPage = () => {
     return (
@@ -30,9 +30,9 @@ const LoginPage = () => {
                             placeholder="Enter your password here"
                             className="w-full border bg-[#F3F3F3] border-gray-600 rounded-full px-5 py-2"
                         />
-                        <Link className="text-blue-400 text-xs font-semibold self-end">
+                        <NavLink className="text-blue-400 text-xs font-semibold self-end">
                             FORGOT PASSWORD?
-                        </Link>
+                        </NavLink>
                     </div>
                 </div>
                 <div className="gap-y-4 flex flex-col mt-8 w-fit items-center">
@@ -41,7 +41,7 @@ const LoginPage = () => {
                     </button>
                     <p className="text-xs">
                         NOT A MEMBER?{" "}
-                        <Link className="font-semibold">SIGN UP NOW</Link>
+                        <NavLink to="register" className="font-semibold">SIGN UP NOW</NavLink>
                     </p>
                 </div>
             </div>
