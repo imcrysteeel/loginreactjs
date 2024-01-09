@@ -18,6 +18,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const formSchema = z.object({
     email: z
@@ -57,10 +58,10 @@ const LoginPage = () => {
                 <button className="flex w-full border border-gray-600 bg-[#F3F3F3] rounded-full px-2 py-1 justify-center items-center gap-x-2 uppercase">
                     <FcGoogle className="w-8 h-8" /> continue with google
                 </button>
-                <div className="flex items-center justify-center w-4/5 my-4 gap-x-4">
-                    <div className="bg-gray-600 h-[1px] flex-1" />
+                <div className="flex items-center justify-center w-1/3 my-4 gap-x-4">
+                    <Separator className="bg-foreground/40"/>
                     or
-                    <div className="bg-gray-600 h-[1px] flex-1" />
+                    <Separator className="bg-foreground/40"/>
                 </div>
                 <Form {...form}>
                     <form
