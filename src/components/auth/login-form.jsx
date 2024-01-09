@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import LoginImage from "@/assets/images/login-image.png";
-import { FcGoogle } from "react-icons/fc";
+import BalaifinderLogo from "@/assets/Logo.svg"
 
 import { NavLink } from "react-router-dom";
 import {
@@ -18,7 +18,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import useModalStore from "@/store/useModalStore";
 
 const formSchema = z.object({
     email: z
@@ -28,7 +28,8 @@ const formSchema = z.object({
     password: z.string().min(1, { message: "Please provide a password" }),
 });
 
-const LoginPage = () => {
+const LoginForm = () => {
+    const { onOpen } = useModalStore();
     const [error, setError] = useState("");
 
     const form = useForm({
@@ -54,7 +55,8 @@ const LoginPage = () => {
     return (
         <div className="w-[60rem] bg-white rounded-3xl overflow-hidden flex">
             <div className="flex flex-col items-center justify-center w-1/2 px-16 py-8">
-                <h1 className="text-4xl font-semibold uppercase my-14">BALAIFINDER</h1>
+                <img src={BalaifinderLogo} className="w-64 h-64 bg-fit"/>
+                <h1 className="text-4xl font-semibold uppercase mb-14">BALAIFINDER</h1>
                 <Form {...form}>
                     <form
                         className="flex flex-col items-center w-full"
@@ -112,12 +114,12 @@ const LoginPage = () => {
                             </Button>
                             <p className="text-xs">
                                 NOT A MEMBER?{" "}
-                                <NavLink
-                                    to="register"
-                                    className="font-semibold"
+                                <span
+                                    onClick={()=>onOpen("register-modal")}
+                                    className="font-semibold cursor-pointer"
                                 >
                                     SIGN UP NOW
-                                </NavLink>
+                                </span>
                             </p>
                         </div>
                     </form>
@@ -128,4 +130,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default LoginForm;
