@@ -8,13 +8,14 @@ In the project directory, you can run:
 ### `npm install`
 This will download packages/dependencies used in balaifinder
 
-
 ### `npm run dev`
 Runs the app in the development mode.
 
 ### `npm run build`
 Builds the app for production to the `build` folder.
 
+
+### `git pull` mo lang coqs
 
 Currently, two official plugins are available:
 

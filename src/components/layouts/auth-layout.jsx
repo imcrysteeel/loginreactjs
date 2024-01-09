@@ -1,8 +1,11 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const AuthLayout = () => {
   return (
-    <div>AuthLayout</div>
+    <main className="w-full bg-blue-400 flex justify-center items-center min-h-[100dvh]">
+        <Outlet />
+    </main>
   )
 }
 
