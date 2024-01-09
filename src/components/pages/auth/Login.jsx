@@ -3,7 +3,7 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
 import LoginImage from "@/assets/images/login-image.png";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const LoginPage = () => {
     return (
