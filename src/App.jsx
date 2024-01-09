@@ -7,10 +7,8 @@ import {
 } from "react-router-dom";
 
 import MainLayout from "@/components/layouts/main-layout";
-import AuthLayout from "@/components/layouts/auth-layout";
 
 import HomePage from "@/components/pages/Home";
-import RegisterPage from "@/components/pages/auth/Register";
 import AboutPage from "@/components/pages/About";
 import ContactsPage from "@/components/pages/Contacts";
 import MatchUpPage from "@/components/pages/MatchUp";
@@ -22,9 +20,6 @@ const router = createBrowserRouter(
             <Route path="about" element={<AboutPage />} />
             <Route path="contacts" element={<ContactsPage />} />
             <Route path="match-up" element={<MatchUpPage />} />
-            <Route path="auth" element={<AuthLayout />}>
-                <Route path="register" element={<RegisterPage />} />
-            </Route>
         </Route>
     )
 );

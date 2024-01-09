@@ -2,7 +2,7 @@ import React from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import useModalStore from "@/store/useModalStore";
-import RegisterForm from "@/components/pages/auth/Register";
+import RegisterForm from "@/components/auth/register-form";
 
 const LoginModal = () => {
     const { modalState, modalKey, onClose } = useModalStore();
