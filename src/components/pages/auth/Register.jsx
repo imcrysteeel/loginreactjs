@@ -2,8 +2,10 @@ import React from 'react'
 
 const RegisterPage = () => {
   return (
-    <div>RegisterPage</div>
+    <div>Register</div>
   )
+  
 }
 
+   
 export default RegisterPage
