@@ -15,7 +15,19 @@ Runs the app in the development mode.
 Builds the app for production to the `build` folder.
 
 
-### `git pull` mo lang coqs
+# How To GIT
+
+### push your code changes
+
+1. `git add .` - this will add all changes you did
+2. `git commit -m "message mo"` - this will describe your changes
+3. `git pull` - this will upload the changes to the repository (Github)
+
+### get latest code changes from repository
+Make sure na wala kayong uncommit changes first before pulling.
+
+1. `git pull`
+
 
 Currently, two official plugins are available:
 
