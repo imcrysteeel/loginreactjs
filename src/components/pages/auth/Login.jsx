@@ -1,51 +1,136 @@
-import React from "react";
-
-import { FcGoogle } from "react-icons/fc";
+import React, { useState } from "react";
+import z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import LoginImage from "@/assets/images/login-image.png";
+import { FcGoogle } from "react-icons/fc";
+
 import { NavLink } from "react-router-dom";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormMessage,
+} from "@/components/ui/form";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+const formSchema = z.object({
+    email: z
+        .string()
+        .min(1, { message: "Email is required" })
+        .email("Must be a valid email address"),
+    password: z.string().min(1, { message: "Please provide a password" }),
+});
 
 const LoginPage = () => {
+    const [error, setError] = useState("");
+
+    const form = useForm({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+    });
+
+    const loading = form.formState.isSubmitting;
+
+    const handleOnSubmit = (values) => {
+        try {
+            setError("");
+            console.log("User credentials here -> ", values);
+            // TODO: Login Logic here
+        } catch (e) {
+            setError("Something went wrong");
+        }
+    };
+
     return (
         <div className="w-[60rem] bg-white rounded-3xl overflow-hidden flex">
-            <div className="w-1/2 px-16 py-8 flex flex-col items-center justify-center">
-                <h1 className="text-4xl uppercase my-14 font-semibold">
-                    BALAIFINDER
-                </h1>
+            <div className="flex flex-col items-center justify-center w-1/2 px-16 py-8">
+                <h1 className="text-4xl font-semibold uppercase my-14">BALAIFINDER</h1>
                 <button className="flex w-full border border-gray-600 bg-[#F3F3F3] rounded-full px-2 py-1 justify-center items-center gap-x-2 uppercase">
-                    <FcGoogle className="h-8 w-8" /> continue with google
+                    <FcGoogle className="w-8 h-8" /> continue with google
                 </button>
-                <div className="flex items-center my-4 w-4/5 gap-x-4 justify-center">
+                <div className="flex items-center justify-center w-4/5 my-4 gap-x-4">
                     <div className="bg-gray-600 h-[1px] flex-1" />
                     or
                     <div className="bg-gray-600 h-[1px] flex-1" />
                 </div>
-                <div className="w-full flex flex-col space-y-4">
-                    <input
-                        placeholder="Enter your email here"
-                        className="w-full border bg-[#F3F3F3] border-gray-600 rounded-full px-5 py-2"
-                    />
-                    <div className="relative w-full flex flex-col space-y-2">
-                        <input
-                            placeholder="Enter your password here"
-                            className="w-full border bg-[#F3F3F3] border-gray-600 rounded-full px-5 py-2"
-                        />
-                        <NavLink className="text-blue-400 text-xs font-semibold self-end">
-                            FORGOT PASSWORD?
-                        </NavLink>
-                    </div>
-                </div>
-                <div className="gap-y-4 flex flex-col mt-8 w-fit items-center">
-                    <button className="flex w-full text-white bg-[#19CEEB] rounded-full px-4 py-2 justify-center items-center gap-x-2 uppercase">
-                        Login
-                    </button>
-                    <p className="text-xs">
-                        NOT A MEMBER?{" "}
-                        <NavLink to="register" className="font-semibold">SIGN UP NOW</NavLink>
-                    </p>
-                </div>
+                <Form {...form}>
+                    <form
+                        className="flex flex-col items-center w-full"
+                        onSubmit={form.handleSubmit(handleOnSubmit)}
+                    >
+                        <div className="flex flex-col w-full space-y-4">
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input
+                                                type="email"
+                                                className="w-full border bg-[#F3F3F3] border-gray-600 rounded-full px-5 py-2 focus-visible:ring-0"
+                                                placeholder="Enter your password here"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="password"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input
+                                                type="password"
+                                                className="w-full border bg-[#F3F3F3] border-gray-600 rounded-full px-5 py-2 focus-visible:ring-0"
+                                                placeholder="Enter your password here"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                        <FormDescription className="flex justify-end">
+                                            <NavLink className="self-end text-xs font-semibold text-blue-400">
+                                                FORGOT PASSWORD?
+                                            </NavLink>
+                                        </FormDescription>
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        <p className="my-4 text-xs text-destructive">{error}</p>
+                        <div className="flex flex-col items-center mt-2 gap-y-4 w-fit">
+                            <Button
+                                type="submit"
+                                disabled={loading}
+                                className="flex w-full text-white bg-[#19CEEB] hover:bg-[#19d3ebca] rounded-full px-4 py-2 justify-center items-center gap-x-2 uppercase"
+                            >
+                                Login
+                            </Button>
+                            <p className="text-xs">
+                                NOT A MEMBER?{" "}
+                                <NavLink
+                                    to="register"
+                                    className="font-semibold"
+                                >
+                                    SIGN UP NOW
+                                </NavLink>
+                            </p>
+                        </div>
+                    </form>
+                </Form>
             </div>
-            <img src={LoginImage} className="bg-cover h-full w-1/2" />
+            <img src={LoginImage} className="w-1/2 h-full bg-cover" />
         </div>
     );
 };
