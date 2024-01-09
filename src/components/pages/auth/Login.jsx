@@ -55,14 +55,6 @@ const LoginPage = () => {
         <div className="w-[60rem] bg-white rounded-3xl overflow-hidden flex">
             <div className="flex flex-col items-center justify-center w-1/2 px-16 py-8">
                 <h1 className="text-4xl font-semibold uppercase my-14">BALAIFINDER</h1>
-                <button className="flex w-full border border-gray-600 bg-[#F3F3F3] rounded-full px-2 py-1 justify-center items-center gap-x-2 uppercase">
-                    <FcGoogle className="w-8 h-8" /> continue with google
-                </button>
-                <div className="flex items-center justify-center w-1/3 my-4 gap-x-4">
-                    <Separator className="bg-foreground/40"/>
-                    or
-                    <Separator className="bg-foreground/40"/>
-                </div>
                 <Form {...form}>
                     <form
                         className="flex flex-col items-center w-full"
