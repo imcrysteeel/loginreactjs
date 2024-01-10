@@ -6,11 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import LoginImage from "@/assets/images/login-image.png";
 import BalaifinderLogo from "@/assets/Logo.svg"
 
-import { NavLink } from "react-router-dom";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormMessage,
@@ -24,29 +22,27 @@ const formSchema = z.object({
     email: z
         .string()
         .min(1, { message: "Email is required" })
-        .email("Must be a valid email address"),
-    password: z.string().min(1, { message: "Please provide a password" }),
+        .email("Must be a valid email address")
 });
 
-const LoginForm = () => {
+const ForgotPasswordForm = () => {
     const { onOpen } = useModalStore();
     const [error, setError] = useState("");
 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            email: "",
-            password: "",
+            email: ""
         },
     });
 
     const loading = form.formState.isSubmitting;
 
-    const handleOnSubmit = (values) => {
+    const handleOnSendRecoveryCode = (values) => {
         try {
             setError("");
             console.log("User credentials here -> ", values);
-            // TODO: Login Logic here
+            // TODO: Send Recovery Code Logic here
         } catch (e) {
             setError("Something went wrong");
         }
@@ -57,10 +53,11 @@ const LoginForm = () => {
             <div className="flex flex-col items-center justify-center w-1/2 px-16 py-8">
                 <img src={BalaifinderLogo} className="w-64 h-64 bg-fit"/>
                 <h1 className="text-4xl font-semibold uppercase mb-14">BALAIFINDER</h1>
+                <p className="mb-6 text-sm text-center">Enter your email address & we will send your code</p>
                 <Form {...form}>
                     <form
                         className="flex flex-col items-center w-full"
-                        onSubmit={form.handleSubmit(handleOnSubmit)}
+                        onSubmit={form.handleSubmit(handleOnSendRecoveryCode)}
                     >
                         <div className="flex flex-col w-full space-y-4">
                             <FormField
@@ -72,33 +69,11 @@ const LoginForm = () => {
                                             <Input
                                                 type="email"
                                                 className="w-full border bg-[#F3F3F3] border-gray-600 rounded-full px-5 py-2 focus-visible:ring-0"
-                                                placeholder="Enter your password here"
+                                                placeholder="Enter your account email"
                                                 {...field}
                                             />
                                         </FormControl>
                                         <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="password"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormControl>
-                                            <Input
-                                                type="password"
-                                                className="w-full border bg-[#F3F3F3] border-gray-600 rounded-full px-5 py-2 focus-visible:ring-0"
-                                                placeholder="Enter your password here"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                        <FormDescription className="flex justify-end">
-                                            <p onClick={()=> onOpen("forgot-password-modal")} className="self-end text-xs font-semibold text-blue-400 cursor-pointer">
-                                                FORGOT PASSWORD?
-                                            </p>
-                                        </FormDescription>
                                     </FormItem>
                                 )}
                             />
@@ -110,15 +85,15 @@ const LoginForm = () => {
                                 disabled={loading}
                                 className="flex w-full text-white bg-[#19CEEB] hover:bg-[#19d3ebca] rounded-full px-4 py-2 justify-center items-center gap-x-2 uppercase"
                             >
-                                Login
+                                Send
                             </Button>
                             <p className="text-xs">
-                                NOT A MEMBER?{" "}
+                                Remember you password?{" "}
                                 <span
-                                    onClick={()=>onOpen("register-modal")}
+                                    onClick={()=>onOpen("login-modal")}
                                     className="font-semibold cursor-pointer"
                                 >
-                                    SIGN UP NOW
+                                    SIGN IN NOW
                                 </span>
                             </p>
                         </div>
@@ -130,4 +105,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default ForgotPasswordForm;
