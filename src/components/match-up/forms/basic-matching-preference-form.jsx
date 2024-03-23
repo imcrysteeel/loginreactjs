@@ -98,60 +98,7 @@ const BasicMatchingPrefForm = () => {
                             </FormItem>
                         )}
                     />
-                    <FormField
-                        control={form.control}
-                        name="numberOfBedrooms"
-                        render={({ field }) => (
-                            <FormItem className="flex flex-col ">
-                                <FormLabel className="w-full text-center uppercase">
-                                    number of bedrooms
-                                </FormLabel>
-                                <FormControl>
-                                    <Select
-                                        onValueChange={field.onChange}
-                                        defaultValue={field.value}
-                                    >
-                                        <SelectTrigger className="rounded-full border-sky-500 border-[3px]">
-                                            <SelectValue placeholder="" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="A">A</SelectItem>
-                                            <SelectItem value="B">B</SelectItem>
-                                            <SelectItem value="C">C</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="propertySize"
-                        render={({ field }) => (
-                            <FormItem className="flex flex-col ">
-                                <FormLabel className="w-full text-center uppercase">
-                                    property size
-                                </FormLabel>
-                                <FormControl>
-                                    <Select
-                                        onValueChange={field.onChange}
-                                        defaultValue={field.value}
-                                    >
-                                        <SelectTrigger className="rounded-full border-sky-500 border-[3px]">
-                                            <SelectValue placeholder="" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="A">A</SelectItem>
-                                            <SelectItem value="B">B</SelectItem>
-                                            <SelectItem value="C">C</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+
                     <FormField
                         control={form.control}
                         name="typeOfProperty"
@@ -159,33 +106,6 @@ const BasicMatchingPrefForm = () => {
                             <FormItem className="flex flex-col ">
                                 <FormLabel className="w-full text-center uppercase">
                                     type of property
-                                </FormLabel>
-                                <FormControl>
-                                    <Select
-                                        onValueChange={field.onChange}
-                                        defaultValue={field.value}
-                                    >
-                                        <SelectTrigger className="rounded-full border-sky-500 border-[3px]">
-                                            <SelectValue placeholder="" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="A">A</SelectItem>
-                                            <SelectItem value="B">B</SelectItem>
-                                            <SelectItem value="C">C</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="typeOfNeighborhood"
-                        render={({ field }) => (
-                            <FormItem className="flex flex-col ">
-                                <FormLabel className="w-full text-center uppercase">
-                                    type of neighborhood
                                 </FormLabel>
                                 <FormControl>
                                     <Select
